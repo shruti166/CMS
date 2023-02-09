@@ -21,7 +21,7 @@ app.get("*", (req, res) => {
 
 app.use(express.json())
 
-const port = 8000;
+const port = process.env.port ||  8000;
 connect();
 const storage = multer.diskStorage({
     destination:(req,file,callbackFn) =>{
