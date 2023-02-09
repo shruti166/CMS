@@ -7,12 +7,13 @@ const userRouter = require('./Routes/userRouter')
 const app = express();
 
 
-app.use("/upload", express.static(path.join(__dirname, "/../uploads")));
-app.use(express.static(path.join(__dirname, "/../client/build")));
+
+
 
 app.get("*", (req, res) => {
   try {
-    res.sendFile(path.join(`${__dirname}/../client/build/index.html`));
+    app.use(express.static(path.resolve(__dirname,'client', 'build')));
+    res.sendFile(path.resolve(__dirname,'client', 'build','index.html' ));
   } catch (e) {
     res.send("Welcome to CMS");
   }
