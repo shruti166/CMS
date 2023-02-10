@@ -7,14 +7,14 @@ const userRouter = require("./Routes/userRouter");
 const app = express();
 
 
-app.get("*", (req, res) => {
-  try {
-    app.use(express.static(path.resolve(__dirname, "client", "build")));
-    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-  } catch (e) {
-    res.send("Welcome to CMS");
-  }
-});
+// app.get("*", (req, res) => {
+//   try {
+//     app.use(express.static(path.resolve(__dirname, "client", "build")));
+//     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+//   } catch (e) {
+//     res.send("Welcome to CMS");
+//   }
+// });
 
 app.use(express.json());
 
