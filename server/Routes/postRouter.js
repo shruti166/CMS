@@ -1,10 +1,10 @@
 const express = require('express');
 const postModel = require('../models/postSchema');
 
-const router = express.Router();
+const postRouter = express.Router();
 
 //Create Post
-router.post('/',async (req, res) => {
+postRouter.post('/create',async (req, res) => {
     const post = req.body
     try {
         let existPostWithTitle = await postModel.findOne({ title: post.title})
@@ -22,7 +22,7 @@ router.post('/',async (req, res) => {
 })
 
 //Update Post
-router.put('/:id',async (req, res) => {
+postRouter.put('/:id',async (req, res) => {
    try {
     const post = await postModel.findById(req.params.id)
     if(post.username === req.body.username){
@@ -50,7 +50,7 @@ router.put('/:id',async (req, res) => {
 })
 
 //Delete Post
-router.delete('/:id',async (req, res) => {
+postRouter.delete('/:id',async (req, res) => {
     try {
         const post = await postModel.findById(req.params.id)
         if(post.username === req.body.username){
@@ -72,7 +72,7 @@ router.delete('/:id',async (req, res) => {
 })
 
 //Get Post
-router.get("/:id", async (req, res) => {
+postRouter.get("/:id", async (req, res) => {
     try {
         let post = await postModel.findById(req.params.id);
         res.send(post);
@@ -82,7 +82,7 @@ router.get("/:id", async (req, res) => {
 })
 
 //Get All Posts
-router.get("/", async (req, res) => {
+postRouter.get("/", async (req, res) => {
     const username = req.query.user;
     const category = req.query.cat;
     try {
@@ -106,4 +106,4 @@ router.get("/", async (req, res) => {
     }
 })
 
-module.exports = router
+module.exports = postRouter

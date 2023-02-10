@@ -5,6 +5,7 @@ import Login from './components/Login';
 import Register from './components/Register'
 import './App.css';
 import Profile from './components/Profile';
+import Create from './components/Create';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path = "/login" element = {<Login/>}>LOGIN</Route>
         <Route path = "/register" element = {<Register/>}>LOGIN</Route>
         <Route path = "/profile" element = {<Profile/>}>Profile</Route>
+        <Route path = "/create" element = {<Create />}>Profile</Route>
       </Routes>
     </div>
   );
