@@ -1,7 +1,9 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
-import { Navigate } from "react-router-dom";
+
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Login() {
  
@@ -21,12 +23,13 @@ export default function Login() {
           .post("/users/login", userData)
           .then((res) => {
             console.log(res.data);
-            alert("Logged In successfully");
-            <Navigate to = "/profile"/>
+           toast("Logged In successfully");
+          
            
           })
           .catch((err) => {
-            console.log(err);
+            
+            toast(err.res.data)
           });
       }
     

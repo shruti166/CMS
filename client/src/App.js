@@ -7,9 +7,12 @@ import './App.css';
 import Profile from './components/Profile';
 import Create from './components/Create';
 import Home from './components/Home';
+import {ToastContainer} from "react-toastify"
 
 function App() {
   return (
+    <>
+    <ToastContainer/>
     <div className="App">
       <Navbar/>
       <Routes>
@@ -21,6 +24,7 @@ function App() {
         
       </Routes>
     </div>
+    </>
   );
 }
 

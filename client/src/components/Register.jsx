@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function SignUp() {
   const [email, setEmail] = useState("");
@@ -19,7 +21,7 @@ export default function SignUp() {
           .post("/users/register", userData)
           .then((res) => {
             console.log(res.data);
-            alert("user is Registered");
+            toast("user is Registered");
            
            
           })
