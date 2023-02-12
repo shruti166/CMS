@@ -66,9 +66,9 @@ export default function SignUp() {
         />
         <br />
         <button
-          className="btn btn-outline"
+          className="btn btn-outline-light"
           style={{
-            width: "250px", margin: "10px", border: "none" , padding: "10px", borderRadius: "5px", backgroundColor: "#AA9988"
+            width: "250px", margin: "10px", border: "none" , padding: "10px", borderRadius: "5px"
             
           }}
           onClick = {handleSubmit}

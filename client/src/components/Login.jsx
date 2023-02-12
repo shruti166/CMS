@@ -68,11 +68,10 @@ export default function Login() {
         />
         <br />
         <button
-          className="btn btn-outline"
+          className="btn btn-outline-dark"
           style={{
             width: "250px",
             margin: "10px",
-            backgroundColor: "#AA9988",
             color: "white",
           }}
           onClick = {handleSubmit}

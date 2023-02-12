@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Create() {
   const [title, setTitle] = useState("");
@@ -8,6 +10,7 @@ export default function Create() {
   const [data, setData] = useState({});
 
   const handleCreate = async(e) => {
+    
     e.preventDefault();
     
     const post = {
@@ -22,7 +25,7 @@ export default function Create() {
         console.log(res.data)
         setData(res.data);
         console.log(data)
-        alert("Post Created successfully");
+        toast("Post Created successfully");
       })
       .catch((err) => {
         console.log(err);
@@ -33,7 +36,7 @@ export default function Create() {
     <div >
     <div style={{ width: "60%", margin: "auto" }}>
       <div className="mb-3">
-        <label htmlFor="exampleFormControlInput1" className="form-label">
+        <label htmlFor="exampleFormControlInput1" className="form-label" color="white">
           Title
         </label>
         <input
@@ -46,7 +49,7 @@ export default function Create() {
         />
       </div>
       <div className="mb-3">
-        <label htmlFor="exampleFormControlTextarea1" className="form-label">
+        <label htmlFor="exampleFormControlTextarea1" className="form-label" color="white">
           Description
         </label>
         <textarea
@@ -59,7 +62,7 @@ export default function Create() {
         ></textarea>
       </div>
       <div className="mb-3">
-        <label htmlFor="exampleFormControlInput1" className="form-label">
+        <label htmlFor="exampleFormControlInput1" className="form-label" color="white">
           Username
         </label>
         <input
