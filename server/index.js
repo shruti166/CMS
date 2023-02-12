@@ -2,8 +2,8 @@ const multer = require("multer");
 const express = require("express");
 const connect = require("./config/db.js");
 const path = require("path");
-const postRoute = require("./Routes/postRouter");
 const userRouter = require("./Routes/userRouter");
+const postRouter = require("./Routes/postRouter");
 const app = express();
 
 
@@ -38,7 +38,7 @@ app.post("/upload", upload.single("file"), (req, res) => {
 });
 
 app.use("/users", userRouter);
-app.use("/posts", postRoute);
+app.use("/posts", postRouter);
 app.listen(port, () => {
   console.log(`Server listening at ${port}`);
 });

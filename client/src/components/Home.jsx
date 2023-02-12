@@ -4,18 +4,23 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FaEdit, FaTrash } from "react-icons/fa";
 
+
 export default function Home() {
+  
   const [data, setData] = useState([]);
+  
   const handleFetch = async () => {
     toast("Fetching posts for you");
     await axios
       .get("/posts/")
       .then((res) => {
-        setData(res.data.data);
+        setData(res.data);
+        
       })
       .catch((err) => {
         console.log(err);
       });
+   
   };
 
   return (

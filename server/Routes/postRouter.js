@@ -72,37 +72,30 @@ postRouter.delete('/:id',async (req, res) => {
 })
 
 //Get Post
+
 postRouter.get("/:id", async (req, res) => {
+    
     try {
         let post = await postModel.findById(req.params.id);
         res.send(post);
     } catch (error) {
         res.status(500).send(error);
     }
+    
 })
 
 //Get All Posts
 postRouter.get("/", async (req, res) => {
-    const username = req.query.user;
-    const category = req.query.cat;
+    const page  = Number(req.params.page) || 1;
+    const limit = Number(req.params.limit) || 3;
+    
     try {
-        let posts;
-        if(username){
-            posts = await postModel.find({username});
-        } else if(category){
-            posts = await postModel.find({categories:{
-                $in : [category]
-            }});
-        }
-        else {
-            posts = await postModel.find();
-        }
-        res.send({
-            status: true,
-            data : posts
-        })
+       let posts = await postModel.find().skip(limit * (page - 1))
+       .limit(limit);
+        res.send(posts)
+
     } catch (error) {
-        res.status(500).send(error);
+       console.log(error)
     }
 })
 
