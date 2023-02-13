@@ -6,21 +6,47 @@ import { FaEdit, FaTrash } from "react-icons/fa";
 
 
 export default function Home() {
-  
   const [data, setData] = useState([]);
+  const page = 1;
+
+  const handlePrev = async () => {
   
-  const handleFetch = async () => {
     toast("Fetching posts for you");
     await axios
-      .get("/posts/")
+      .get(`/posts/?page=${page-1}&limit=3`)
       .then((res) => {
-        setData(res.data);
+        setData(res.data.posts);
+      
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  const handleNext = async () => {
+
+    toast("Fetching posts for you");
+    await axios
+      .get(`/posts/?page=${page+1}&limit=3`)
+      .then((res) => {
+        setData(res.data.posts);
         
       })
       .catch((err) => {
         console.log(err);
       });
-   
+  };
+  
+  const handleFetch = async () => {
+    toast("Fetching posts for you");
+    await axios
+      .get('/posts/')
+      .then((res) => {
+        setData(res.data.posts);
+        
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -56,9 +82,28 @@ export default function Home() {
                 <FaTrash />
               </div>
             </div>
+          
           </div>
+          
         );
       })}
+        <div style = {{display: 'flex', justifyContent:'center'}}>
+              <button
+                type="button"
+                className="btn btn-outline-light"
+                onClick={handlePrev}
+                
+              >
+                Prev
+              </button>
+              <button
+                type="button"
+                className="btn btn-outline-light"
+                onClick={handleNext}
+              >
+                Next
+              </button>
+            </div>
     </div>
   );
-}
+    }
